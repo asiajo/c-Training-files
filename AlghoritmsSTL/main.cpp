@@ -52,7 +52,7 @@ int main()
 
     message("This is a presentation of most STL algorithms in c++ for my training purposes.");
     message("------------------------------------------------------------------------------");
-    message("Version 1 completed till algorithm no 45.");
+    message("Version 2 completed till algorithm no 50.");
     message("\nLet's start with populating vectors.\n");
 
     message(alghoritm_no++, ". Generate algorithm");
@@ -341,13 +341,43 @@ int main()
     list2.merge(list1);
     display_vector(list2);
 
+
     message("\nGroup seven: Set operations (on sorted ranges): ");
     message("----------------------------------------------- ");
+
     message(alghoritm_no++, ". includes");
+    vector <int> v1sub{5, 5, 5, 5};
+    std::cout << "\tVector1 contains four consecutive fives: " << std::boolalpha <<  std::includes(v1.begin(), v1.end(), v1sub.begin(), v1sub.end()) << std::endl;
+
     message(alghoritm_no++, ". set_difference");
+    message ("\tVector1 before removing four consecutive fives: ");
+    display_vector(v1);
+    std::set_difference(v1.begin(), v1.end(), v1sub.begin(), v1sub.end(), v1.begin());
+    v1.erase(v1.end()-v1sub.size(), v1.end());
+    message ("\tVector1 after removing four consecutive fives: ");
+    display_vector(v1);
+
     message(alghoritm_no++, ". set_intersection");
+    message ("\tVectors 1 and 2 look like: ");
+    display_vector(v1);
+    display_vector(v2);
+    vector <int> intersect;
+    std::set_intersection(v1.begin(), v1.end(), v2.begin(), v2.end(), std::back_inserter(intersect));
+    message ("\tCommon elements between vector1 and vector2 are: ");
+    display_vector(intersect);
+
     message(alghoritm_no++, ". set_symmetric_difference");
+    vector <int> differences;
+    std::set_symmetric_difference(v1.begin(), v1.end(), v2.begin(), v2.end(), std::back_inserter(differences));
+    message ("\tDifferent elements between vector1 and vector2 are: ");
+    display_vector(differences);
+
     message(alghoritm_no++, ". set_union");
+    vector <int> vUnion;
+    std::set_union(v1.begin(), v1.end(), v2.begin(), v2.end(), std::back_inserter(vUnion));
+    message ("\tUnion of vectors 1 and 2 is: ");
+    display_vector(vUnion);
+
     message("\nGroup eight: Heap operations: ");
     message("----------------------------- ");
     message(alghoritm_no++, ". make_heap");
